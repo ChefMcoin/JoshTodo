@@ -1,19 +1,8 @@
 import React, { useState, useEffect } from "react";
-// import TaskList from "./taskList";
-// import InputField from "./inputField";
-// import DoneList from "./DoneList";
-// import { getStoredTasks, setStoredTasks } from "../utils/storage";
-// import { getStoredTasks, setStoredTasks } from "../utils/storage";
 import InputField from "./_partials/InputContainer";
 import TaskList from "./_partials/TaskList";
 import DoneList from "./_partials/DoneList";
 import { getStoredTasks, setStoredTasks } from "../../utils/storage";
-// import TaskList from "./TaskList";
-// import DoneList from "./DoneList";
-// import InputField from "../pages/Todo/_partials/InputContainer";
-// import DoneList from "../pages/Todo/_partials/DoneList";
-// import TaskList from "../pages/Todo/_partials/TaskList";
-// import InputField from "./InputField";
 
 const Todo = () => {
   const [inputValue, setInputValue] = useState("");
@@ -21,16 +10,13 @@ const Todo = () => {
   const [doneTasks, setDoneTasks] = useState([]);
 
   useEffect(() => {
-    // const storedTasks = getStoredTasks("tasks");
     const storedTasks = getStoredTasks("tasks");
-    // const storedDoneTasks = getStoredTasks("doneTasks");
     const storedDoneTasks = getStoredTasks("doneTasks");
     setTasks(storedTasks);
     setDoneTasks(storedDoneTasks);
   }, []);
 
   useEffect(() => {
-    // setStoredTasks("tasks", tasks);
     setStoredTasks("tasks", tasks);
   }, [tasks]);
 
@@ -72,7 +58,6 @@ const Todo = () => {
     );
 
     setDoneTasks([...doneTasks, { ...taskToMark, completed: true }]);
-    // setTasks(tasks.filter((task) => task.id !== taskId));
   };
 
   const markAsDelete = (taskId) => {
@@ -87,24 +72,11 @@ const Todo = () => {
       )
     );
 
-    // setDoneTasks([...doneTasks, { ...taskToMarkNew, completed: true }]);
     setTasks(tasks.filter((task) => task.id !== taskId));
   };
 
   return (
     <div className="w-3/12 bg-[#1D1825] px-12 py-10 rounded-md">
-      {/* <InputField
-        inputValue={inputValue}
-        handleInputChange={handleInputChange}
-        addTask={addTask}
-        handleKeyPress={handleKeyPress}
-      /> */}
-      {/* <InputField
-        inputValue={inputValue}
-        handleInputChange={handleInputChange}
-        addTask={addTask}
-        handleKeyPress={handleKeyPress}
-      /> */}
       <InputField
         inputValue={inputValue}
         handleInputChange={handleInputChange}
@@ -117,18 +89,6 @@ const Todo = () => {
         markAsDelete={markAsDelete}
       />
       <DoneList doneTasks={doneTasks} />
-      {/* <TaskList
-        tasks={tasks}
-        markAsDone={markAsDone}
-        markAsDelete={markAsDelete}
-      /> */}
-      {/* <TaskList
-        tasks={tasks}
-        markAsDone={markAsDone}
-        markAsDelete={markAsDelete}
-      /> */}
-      {/* <DoneList doneTasks={doneTasks} /> */}
-      {/* <DoneList doneTasks={doneTasks} /> */}
     </div>
   );
 };
